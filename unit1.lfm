@@ -1,21 +1,72 @@
 object Form1: TForm1
-  Left = 200
-  Height = 360
-  Top = 165
-  Width = 480
-  Caption = 'Form1'
-  ClientHeight = 360
-  ClientWidth = 480
+  Left = 218
+  Height = 482
+  Top = 325
+  Width = 684
+  Caption = 'EyeWheels'
+  ClientHeight = 482
+  ClientWidth = 684
   DesignTimePPI = 144
   OnCreate = FormCreate
   LCLVersion = '2.0.2.0'
-  object ToggleBox1: TToggleBox
-    Left = 104
+  object ForwardTB: TToggleBox
+    Left = 296
     Height = 118
-    Top = 120
+    Top = 40
     Width = 122
-    Caption = 'ToggleBox1'
-    OnChange = ToggleBox1Change
+    Caption = 'ForwardTB'
+    OnChange = ForwardTBChange
     TabOrder = 0
+  end
+  object BackwardsTB: TToggleBox
+    Left = 208
+    Height = 109
+    Top = 344
+    Width = 152
+    Caption = 'BackwardsTB'
+    OnChange = BackwardsTBChange
+    TabOrder = 1
+  end
+  object PortEdit: TEdit
+    Left = 40
+    Height = 33
+    Top = 8
+    Width = 96
+    OnChange = PortEditChange
+    TabOrder = 2
+    Text = 'COM5'
+  end
+  object DurationSlider: TTrackBar
+    Left = 600
+    Height = 392
+    Top = 24
+    Width = 72
+    LineSize = 50
+    Max = 10000
+    Min = 10
+    OnChange = DurationSliderChange
+    Orientation = trVertical
+    Position = 1000
+    ScalePos = trRight
+    TabOrder = 3
+  end
+  object UpDown1: TUpDown
+    Left = 24
+    Height = 186
+    Top = 115
+    Width = 63
+    Max = 4
+    Min = 0
+    OnClick = UpDown1Click
+    Position = 0
+    TabOrder = 4
+  end
+  object Label1: TLabel
+    Left = 32
+    Height = 25
+    Top = 64
+    Width = 48
+    Caption = 'speed'
+    ParentColor = False
   end
 end
