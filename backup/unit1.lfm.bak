@@ -16,7 +16,6 @@ object Form1: TForm1
     Width = 122
     Caption = 'ForwardTB'
     OnChange = ForwardTBChange
-    OnMouseEnter = ForwardTBChange
     TabOrder = 0
   end
   object BackwardsTB: TToggleBox
@@ -26,7 +25,6 @@ object Form1: TForm1
     Width = 152
     Caption = 'BackwardsTB'
     OnChange = BackwardsTBChange
-    OnMouseEnter = BackwardsTBChange
     TabOrder = 1
   end
   object PortEdit: TEdit
