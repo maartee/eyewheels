@@ -207,7 +207,7 @@ begin
 
   // back
 
-  Xposition := midpos - speed;
+  Xposition := midpos + speed;
   Yposition := midpos;
   MoveJoystick(Xposition,Yposition);
 
