@@ -13,36 +13,36 @@ type
   { TForm1 }
 
   TForm1 = class(TForm)
+    BackwardsTB: TButton;
+    ForwardTB: TButton;
+    FwdLeftTB: TButton;
+    FwdRightTB: TButton;
     Label1: TLabel;
+    LeftTB: TButton;
+    NopTB: TButton;
     PortEdit: TEdit;
-    ForwardTB: TToggleBox;
-    BackwardsTB: TToggleBox;
     DurationSlider: TTrackBar;
-    FwdLeftTB: TToggleBox;
-    FwdRightTB: TToggleBox;
-    LeftTB: TToggleBox;
-    NopTB: TToggleBox;
-    RightTB: TToggleBox;
-    StopTB: TToggleBox;
-    Stop1TB: TToggleBox;
+    RightTB: TButton;
+    Stop1TB: TButton;
+    StopTB: TButton;
     UpDown1: TUpDown;
 
-    //procedure ForwardTBMouseEnter(Sender: TObject);
-    procedure ReleaseToggleboxes;
+
     procedure DurationSliderChange(Sender: TObject);
     procedure FormResize(Sender: TObject);
-   //  procedure FormResize(Sender: TObject);
-    procedure FwdLeftTBChange(Sender: TObject);
-    procedure FwdRightTBChange(Sender: TObject);
-    procedure LeftTBChange(Sender: TObject);
+    procedure SetButtonSizes;
+    procedure FwdLeftTBClick(Sender: TObject);
+
+    procedure FwdRightTBClick(Sender: TObject);
+    procedure LeftTBClick(Sender: TObject);
     procedure PortEditChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure ForwardTBChange(Sender: TObject);
+    procedure ForwardTBClick(Sender: TObject);
     procedure MoveJoystick(xpos:integer;ypos:integer);
-    procedure BackwardsTBChange(Sender: TObject);
-    procedure RightTBChange(Sender: TObject);
-    procedure StopTBChange(Sender: TObject);
-    procedure Stop1TBChange(Sender: TObject);
+    procedure BackwardsTBClick(Sender: TObject);
+    procedure RightTBClick(Sender: TObject);
+    procedure StopTBClick(Sender: TObject);
+    procedure Stop1TBClick(Sender: TObject);
     procedure UpDown1Click(Sender: TObject; Button: TUDBtnType);
     procedure Stop();
 
@@ -70,11 +70,10 @@ implementation
 
 { TForm1 }
 
-procedure TForm1.ForwardTBChange(Sender: TObject);
+procedure TForm1.ForwardTBClick(Sender: TObject);
 begin
 
-  ReleaseToggleboxes;
-  Xposition := midpos + speed;
+  Xposition := midpos - speed;
   Yposition := midpos;
   MoveJoystick(Xposition,Yposition);
 end;
@@ -102,13 +101,17 @@ end;
 
 
 procedure TForm1.FormResize(Sender: TObject);
-var
-  Temp: TToggleBox;
-  tilewidth, tileheight, i: integer;
 begin
-  // adjust all toggleboxes sizes
+   SetButtonSizes;
+end;
+
+procedure TForm1.SetButtonSizes;
+var
+  tilewidth, tileheight  : integer;
+begin
+   // adjust all buttonss sizes
   tileheight:= (Form1.Height) div 3;
-  tilewidth := (Form1.Width - (UpDown1.Width + 20 + DurationSlider.Width)) div 3;
+  tilewidth := (Form1.Width - (UpDown1.Width + 40 + DurationSlider.Width)) div 3;
   //SendDebug(inttostr(tilewidth));
   //SendDebug(inttostr(tileheight));
 
@@ -131,32 +134,32 @@ begin
   RightTB.Width:=tilewidth;
   FwdRightTB.Width:=tilewidth;
   NopTB.Width:=tilewidth;
+
 end;
 
-procedure TForm1.FwdLeftTBChange(Sender: TObject);
+procedure TForm1.FwdLeftTBClick(Sender: TObject);
 begin
-  ReleaseToggleboxes;
   //  forward left
-  Xposition := midpos + speed;
+  Xposition := midpos - speed;
   Yposition := midpos - speed;
   MoveJoystick(Xposition,Yposition);
 end;
 
-procedure TForm1.FwdRightTBChange(Sender: TObject);
+
+procedure TForm1.FwdRightTBClick(Sender: TObject);
 begin
-  ReleaseToggleboxes;
+
   //  forward right
-  Xposition := midpos + speed;
+  Xposition := midpos - speed;
   Yposition := midpos + speed;
   MoveJoystick(Xposition,Yposition);
 end;
 
-procedure TForm1.LeftTBChange(Sender: TObject);
+procedure TForm1.LeftTBClick(Sender: TObject);
 begin
-  ReleaseToggleboxes;
   // turn Left
   Xposition := midpos;
-  Yposition := midpos + speed;
+  Yposition := midpos - speed;
   MoveJoystick(Xposition,Yposition);
 end;
 
@@ -199,9 +202,9 @@ begin
 
 end;
 
-procedure TForm1.BackwardsTBChange(Sender: TObject);
+procedure TForm1.BackwardsTBClick(Sender: TObject);
 begin
-    ReleaseToggleboxes;
+
   // back
 
   Xposition := midpos - speed;
@@ -210,24 +213,24 @@ begin
 
 end;
 
-procedure TForm1.RightTBChange(Sender: TObject);
+procedure TForm1.RightTBClick(Sender: TObject);
 begin
-  ReleaseToggleboxes;
+
   // turn right
   Xposition := midpos;
   Yposition := midpos + speed;
   MoveJoystick(Xposition,Yposition);
 end;
 
-procedure TForm1.StopTBChange(Sender: TObject);
+procedure TForm1.StopTBClick(Sender: TObject);
 begin
-  ReleaseToggleboxes;
+
   Stop();
 end;
 
-procedure TForm1.Stop1TBChange(Sender: TObject);
+procedure TForm1.Stop1TBClick(Sender: TObject);
 begin
-  ReleaseToggleboxes;
+
    Stop();
 end;
 procedure TForm1.Stop();
@@ -242,17 +245,17 @@ begin
   Label1.Caption :=  IntToStr(UpDown1.Position);
   speed := UpDown1.Position;
 end;
-procedure TForm1.ReleaseToggleboxes;
-begin
-  ForwardTB.State:=cbUnchecked;
-  FwdLeftTB.State:=cbUnchecked;
-  LeftTB.State:=cbUnchecked;
-  Stop1TB.State:=cbUnchecked;
-  BackwardsTB.State:=cbUnchecked;
-  StopTB.State:=cbUnchecked;
-  RightTB.State:=cbUnchecked;
-  FwdRightTB.State:=cbUnchecked;
-  NopTB.State:=cbUnchecked;
-end;
+//procedure TForm1.ReleaseToggleboxes;
+//begin
+//  ForwardTB.State:=cbUnchecked;
+//  FwdLeftTB.State:=cbUnchecked;
+//  LeftTB.State:=cbUnchecked;
+//  Stop1TB.State:=cbUnchecked;
+//  BackwardsTB.State:=cbUnchecked;
+//  StopTB.State:=cbUnchecked;
+//  RightTB.State:=cbUnchecked;
+//  FwdRightTB.State:=cbUnchecked;
+//  NopTB.State:=cbUnchecked;
+//end;
 end.
 

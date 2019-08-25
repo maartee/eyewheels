@@ -1,5 +1,6 @@
 /*
-  
+  Sketch drives two servos , that are set to move joystick in nd y direction. 
+  // Accepts message from serial port , in following frm (xposition:yposition:duration)  After,, it reerd
 */
 
 #include <Servo.h>
@@ -8,10 +9,8 @@
 
 Servo servoX;  // create servo object to control a servo
 Servo servoY;  // create servo object to control a servo
-// int val;    // variable to read the value from the analog pin
-int maxcycles = 5; //set by pc?. as variable ? -  this value limits max cycles before return to neutrál
-int counter;  //used for maxcycles counting
-int maxduration = 8000; // this value we get from pc
+
+int maxduration = 8000; // the maximum move duration
 int neutralpos = 90;  //servo middle position
 int neutraltime = 300;  // how long we stay at middle position after move
 int xpos, ypos, duration;
@@ -23,9 +22,9 @@ void setup() {
   xpos = ypos = neutralpos; // set to middle position
   cycledelay = 100;  // intervals, in which we check serial for new data, until 'duration' time is reached
   // initialize servos:s
-  servoX.attach(9); 
+  servoX.attach(8); 
   servoX.write(neutralpos);                  // sets the servo position according to the scaled value
-  servoY.attach(10); 
+  servoY.attach(9); 
   servoY.write(neutralpos); 
   
   delay(1500); // let the servos move to position
@@ -38,8 +37,7 @@ void setup() {
 
 
 void loop() {
-  //security counter- if we receive no data for maxtime, we reset servo position to 90 deg - needs revision, may be useless:
-  counter = maxcycles;
+ 
       // Read serial input - three integer values between ( ) otherwise skip to next: 
   if (Serial.available() > 0) {
     char inChar = Serial.read(); // read one char
@@ -65,9 +63,9 @@ void loop() {
         // we need to check  values, then move servos:
         if ((xpos <= 8) and (xpos >= 0) and (ypos <= 8) and (ypos >= 0) 
                and (duration <= maxduration) and (duration >= 0)) {
-          xpos = map(xpos, 0, 8, 0, 180);     // scale it to use it with the servo (value between 0 and 180)
+          xpos = map(xpos, 0, 8, 75, 105);     // scale it to use it with the servo (value between 0 and 180)
           servoX.write(xpos);   
-          ypos = map(ypos, 0, 8, 0, 180);     // scale it to use it with the servo (value between 0 and 180)
+          ypos = map(ypos, 0, 8, 75, 105);     // scale it to use it with the servo (value between 0 and 180)
           servoY.write(ypos); // sets the servo position according to the scaled value
          
           
