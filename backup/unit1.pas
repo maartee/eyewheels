@@ -116,9 +116,9 @@ procedure TForm1.SetButtonSizes;
 var
  btnheight,btnwidth: integer;
 begin
-    // we set middle button position, rest will align by anchors:
+    // we set  button position, rest will align by anchors:
    btnwidth:= Form1.GroupBox1.Width div 3;
-   btnheight:= Form1.GroupBox1.Height div 3;
+   btnheight:= (Form1.GroupBox1.Height-30) div 3;
    Form1.RightTB.Width:=btnwidth;
    Form1.BackwardsTB.Height:=btnheight;
    Form1.LeftTB.Width:=btnwidth;
