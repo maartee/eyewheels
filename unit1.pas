@@ -6,7 +6,11 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
+<<<<<<< HEAD
   ExtCtrls, Buttons, Serial, dbugintf;
+=======
+  Serial, dbugintf;
+>>>>>>> 2bb7b5e5f8efb2afb2ca37be6861792adae05c84
 
 type
 
@@ -17,7 +21,10 @@ type
     ForwardTB: TButton;
     FwdLeftTB: TButton;
     FwdRightTB: TButton;
+<<<<<<< HEAD
     GroupBox1: TGroupBox;
+=======
+>>>>>>> 2bb7b5e5f8efb2afb2ca37be6861792adae05c84
     Label1: TLabel;
     LeftTB: TButton;
     NopTB: TButton;
@@ -31,7 +38,10 @@ type
 
     procedure DurationSliderChange(Sender: TObject);
     procedure FormResize(Sender: TObject);
+<<<<<<< HEAD
     procedure GroupBox1Click(Sender: TObject);
+=======
+>>>>>>> 2bb7b5e5f8efb2afb2ca37be6861792adae05c84
     procedure SetButtonSizes;
     procedure FwdLeftTBClick(Sender: TObject);
 
@@ -107,6 +117,7 @@ begin
    SetButtonSizes;
 end;
 
+<<<<<<< HEAD
 procedure TForm1.GroupBox1Click(Sender: TObject);
 begin
 
@@ -123,6 +134,38 @@ begin
    Form1.BackwardsTB.Height:=btnheight;
    Form1.LeftTB.Width:=btnwidth;
    Form1.ForwardTB.Height:=btnheight;
+=======
+procedure TForm1.SetButtonSizes;
+var
+  tilewidth, tileheight  : integer;
+begin
+   // adjust all buttonss sizes
+  tileheight:= (Form1.Height) div 3;
+  tilewidth := (Form1.Width - (UpDown1.Width + 40 + DurationSlider.Width)) div 3;
+  //SendDebug(inttostr(tilewidth));
+  //SendDebug(inttostr(tileheight));
+
+  ForwardTB.Height:=tileheight;
+  FwdLeftTB.Height:=tileheight;
+  LeftTB.Height:=tileheight;
+  Stop1TB.Height:=tileheight;
+  BackwardsTB.Height:=tileheight;
+  StopTB.Height:=tileheight;
+  RightTB.Height:=tileheight;
+  FwdRightTB.Height:=tileheight;
+  NopTB.Height:=tileheight;
+
+  ForwardTB.Width:=tilewidth;
+  FwdLeftTB.Width:=tilewidth;
+  LeftTB.Width:=tilewidth;
+  Stop1TB.Width:=tilewidth;
+  BackwardsTB.Width:=tilewidth;
+  StopTB.Width:=tilewidth;
+  RightTB.Width:=tilewidth;
+  FwdRightTB.Width:=tilewidth;
+  NopTB.Width:=tilewidth;
+
+>>>>>>> 2bb7b5e5f8efb2afb2ca37be6861792adae05c84
 end;
 
 procedure TForm1.FwdLeftTBClick(Sender: TObject);
@@ -233,6 +276,21 @@ begin
   Label1.Caption :=  IntToStr(UpDown1.Position);
   speed := UpDown1.Position;
 end;
+<<<<<<< HEAD
 
+=======
+//procedure TForm1.ReleaseToggleboxes;
+//begin
+//  ForwardTB.State:=cbUnchecked;
+//  FwdLeftTB.State:=cbUnchecked;
+//  LeftTB.State:=cbUnchecked;
+//  Stop1TB.State:=cbUnchecked;
+//  BackwardsTB.State:=cbUnchecked;
+//  StopTB.State:=cbUnchecked;
+//  RightTB.State:=cbUnchecked;
+//  FwdRightTB.State:=cbUnchecked;
+//  NopTB.State:=cbUnchecked;
+//end;
+>>>>>>> 2bb7b5e5f8efb2afb2ca37be6861792adae05c84
 end.
 

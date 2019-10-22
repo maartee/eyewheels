@@ -1,4 +1,5 @@
 object Form1: TForm1
+<<<<<<< HEAD
   Left = -11
   Height = 476
   Top = 0
@@ -11,12 +12,28 @@ object Form1: TForm1
   Font.CharSet = ANSI_CHARSET
   Font.Color = clBlack
   Font.Height = -40
+=======
+  Left = 713
+  Height = 1359
+  Top = 491
+  Width = 1118
+  Anchors = []
+  AutoSize = True
+  Caption = 'EyeWheels'
+  ClientHeight = 1359
+  ClientWidth = 1118
+  DesignTimePPI = 240
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clBlack
+  Font.Height = -67
+>>>>>>> 2bb7b5e5f8efb2afb2ca37be6861792adae05c84
   Font.Name = 'Tahoma'
   Font.Pitch = fpVariable
   Font.Quality = fqDraft
   OnCreate = FormCreate
   OnResize = FormResize
   LCLVersion = '2.0.2.0'
+<<<<<<< HEAD
   object GroupBox1: TGroupBox
     AnchorSideLeft.Control = UpDown1
     AnchorSideLeft.Side = asrBottom
@@ -280,10 +297,62 @@ object Form1: TForm1
     Width = 118
     Anchors = [akLeft, akBottom]
     BorderSpacing.Right = 30
+=======
+  object PortEdit: TEdit
+    Left = 0
+    Height = 89
+    Top = 27
+    Width = 293
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -67
+    Font.Name = 'Tahoma'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    OnChange = PortEditChange
+    ParentFont = False
+    TabOrder = 0
+    Text = 'COM5'
+  end
+  object DurationSlider: TTrackBar
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Side = asrBottom
+    Left = 2248
+    Height = 876
+    Top = 72
+    Width = 0
+    LineSize = 50
+    Max = 8000
+    Min = 50
+    OnChange = DurationSliderChange
+    Orientation = trVertical
+    Position = 1000
+    ScalePos = trRight
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -67
+    Font.Name = 'Tahoma'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 1
+  end
+  object UpDown1: TUpDown
+    AnchorSideTop.Control = Label1
+    AnchorSideTop.Side = asrBottom
+    Left = 0
+    Height = 772
+    Top = 247
+    Width = 272
+    BorderSpacing.Right = 50
+>>>>>>> 2bb7b5e5f8efb2afb2ca37be6861792adae05c84
     Max = 4
     Min = 0
     OnClick = UpDown1Click
     Position = 0
+<<<<<<< HEAD
     TabOrder = 1
   end
   object Label1: TLabel
@@ -303,12 +372,29 @@ object Form1: TForm1
     Font.CharSet = ANSI_CHARSET
     Font.Color = clBlack
     Font.Height = -40
+=======
+    TabOrder = 2
+  end
+  object Label1: TLabel
+    AnchorSideTop.Control = PortEdit
+    AnchorSideTop.Side = asrBottom
+    Left = 53
+    Height = 81
+    Top = 141
+    Width = 174
+    BorderSpacing.Around = 25
+    Caption = 'speed'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -67
+>>>>>>> 2bb7b5e5f8efb2afb2ca37be6861792adae05c84
     Font.Name = 'Tahoma'
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     ParentColor = False
     ParentFont = False
   end
+<<<<<<< HEAD
   object DurationSlider: TTrackBar
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = Owner
@@ -337,4 +423,198 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 3
   end
+=======
+  object FwdLeftTB: TButton
+    AnchorSideLeft.Control = UpDown1
+    AnchorSideLeft.Side = asrBottom
+    Left = 322
+    Height = 91
+    Top = 27
+    Width = 337
+    AutoSize = True
+    Caption = 'FwdLeftTB'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -67
+    Font.Name = 'Tahoma'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    OnClick = FwdLeftTBClick
+    ParentFont = False
+    TabOrder = 3
+  end
+  object ForwardTB: TButton
+    AnchorSideLeft.Control = FwdLeftTB
+    AnchorSideLeft.Side = asrBottom
+    Left = 659
+    Height = 91
+    Top = 27
+    Width = 345
+    AutoSize = True
+    Caption = 'ForwardTB'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -67
+    Font.Name = 'Tahoma'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    OnClick = ForwardTBClick
+    ParentFont = False
+    TabOrder = 4
+  end
+  object FwdRightTB: TButton
+    AnchorSideLeft.Control = ForwardTB
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideRight.Control = DurationSlider
+    Left = 1004
+    Height = 91
+    Top = 16
+    Width = 1244
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = True
+    Caption = 'FwdRightTB'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -67
+    Font.Name = 'Tahoma'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    OnClick = FwdRightTBClick
+    ParentFont = False
+    TabOrder = 5
+  end
+  object LeftTB: TButton
+    AnchorSideLeft.Control = UpDown1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = FwdLeftTB
+    AnchorSideTop.Side = asrBottom
+    Left = 322
+    Height = 91
+    Top = 118
+    Width = 215
+    AutoSize = True
+    Caption = 'LeftTB'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -67
+    Font.Name = 'Tahoma'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    OnClick = LeftTBClick
+    ParentFont = False
+    TabOrder = 6
+  end
+  object BackwardsTB: TButton
+    AnchorSideLeft.Control = Stop1TB
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = NopTB
+    AnchorSideTop.Side = asrBottom
+    Left = 595
+    Height = 1185
+    Top = 209
+    Width = 418
+    Anchors = [akTop, akLeft, akBottom]
+    AutoSize = True
+    Caption = 'BackwardsTB'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -67
+    Font.Name = 'Tahoma'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    OnClick = BackwardsTBClick
+    ParentFont = False
+    TabOrder = 7
+  end
+  object NopTB: TButton
+    AnchorSideLeft.Control = LeftTB
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = ForwardTB
+    AnchorSideTop.Side = asrBottom
+    Left = 537
+    Height = 91
+    Top = 118
+    Width = 222
+    AutoSize = True
+    Caption = 'NopTB'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -67
+    Font.Name = 'Tahoma'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 8
+  end
+  object RightTB: TButton
+    AnchorSideLeft.Control = NopTB
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = FwdRightTB
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = DurationSlider
+    Left = 759
+    Height = 91
+    Top = 107
+    Width = 1489
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = True
+    Caption = 'RightTB'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -67
+    Font.Name = 'Tahoma'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    OnClick = RightTBClick
+    ParentFont = False
+    TabOrder = 9
+  end
+  object StopTB: TButton
+    AnchorSideLeft.Control = BackwardsTB
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = RightTB
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = DurationSlider
+    AnchorSideBottom.Side = asrBottom
+    Left = 1013
+    Height = 1196
+    Top = 198
+    Width = 1235
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    AutoSize = True
+    Caption = 'StopTB'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -67
+    Font.Name = 'Tahoma'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    OnClick = StopTBClick
+    ParentFont = False
+    TabOrder = 10
+  end
+  object Stop1TB: TButton
+    AnchorSideLeft.Control = UpDown1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = LeftTB
+    AnchorSideTop.Side = asrBottom
+    AnchorSideBottom.Side = asrBottom
+    Left = 322
+    Height = 1185
+    Top = 209
+    Width = 273
+    Anchors = [akTop, akLeft, akBottom]
+    AutoSize = True
+    Caption = 'Stop1TB'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -67
+    Font.Name = 'Tahoma'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    OnClick = Stop1TBClick
+    ParentFont = False
+    TabOrder = 11
+  end
+>>>>>>> 2bb7b5e5f8efb2afb2ca37be6861792adae05c84
 end
