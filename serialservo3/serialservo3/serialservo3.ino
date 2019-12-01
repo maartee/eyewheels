@@ -1,5 +1,5 @@
 /*
-  Sketch drives two servos , that are set to move joystick in nd y direction. 
+  Sketch drives two servos , that are set to move joystick in x and y direction. 
   // Accepts message from serial port , in following frm (xposition:yposition:duration)  After,, it reerd
 */
 
