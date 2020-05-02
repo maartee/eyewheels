@@ -20,7 +20,7 @@
     </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
-      <DestinationDirectory Value="D:\eyewheels"/>
+      <DestinationDirectory Value="c:\lazarus\eyewheels"/>
       <CompressFinally Value="False"/>
       <OpenInFileMan Value="True"/>
       <UseFileFilters Value="True"/>

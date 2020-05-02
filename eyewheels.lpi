@@ -23,7 +23,6 @@
       <DestinationDirectory Value="c:\lazarus\eyewheels"/>
       <CompressFinally Value="False"/>
       <OpenInFileMan Value="True"/>
-      <UseFileFilters Value="True"/>
     </PublishOptions>
     <RunParams>
       <FormatVersion Value="2"/>

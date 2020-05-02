@@ -1,12 +1,14 @@
 object Form1: TForm1
-  Left = -11
-  Height = 476
-  Top = 0
+  Left = -10
+  Height = 167
+  Top = 309
   Width = 671
+  AlphaBlend = True
+  AlphaBlendValue = 140
   Anchors = []
   Caption = 'EyeWheels'
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 167
+  ClientWidth = 671
   DesignTimePPI = 144
   Font.CharSet = ANSI_CHARSET
   Font.Color = clBlack
@@ -25,12 +27,12 @@ object Form1: TForm1
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 118
-    Height = 0
+    Height = 167
     Top = 0
-    Width = 0
+    Width = 433
     Anchors = [akTop, akLeft, akRight, akBottom]
-    ClientHeight = 0
-    ClientWidth = 0
+    ClientHeight = 114
+    ClientWidth = 429
     Color = clSilver
     Font.CharSet = ANSI_CHARSET
     Font.Color = clBlack
@@ -135,7 +137,7 @@ object Form1: TForm1
       AnchorSideRight.Control = GroupBox1
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = BackwardsTB
-      Left = -428
+      Left = 1
       Height = 0
       Top = 0
       Width = 428
@@ -161,9 +163,9 @@ object Form1: TForm1
       AnchorSideBottom.Control = GroupBox1
       AnchorSideBottom.Side = asrBottom
       Left = 360
-      Height = 0
+      Height = 114
       Top = 0
-      Width = 0
+      Width = 69
       Anchors = [akTop, akLeft, akRight, akBottom]
       Caption = 'Stop1TB'
       Font.CharSet = ANSI_CHARSET
@@ -186,7 +188,7 @@ object Form1: TForm1
       AnchorSideBottom.Side = asrBottom
       Left = 360
       Height = 251
-      Top = -251
+      Top = -137
       Width = 0
       Anchors = [akLeft, akRight, akBottom]
       Caption = 'BackwardsTB'
@@ -208,7 +210,7 @@ object Form1: TForm1
       AnchorSideBottom.Control = GroupBox1
       AnchorSideBottom.Side = asrBottom
       Left = 0
-      Height = 0
+      Height = 114
       Top = 0
       Width = 360
       Anchors = [akTop, akLeft, akRight, akBottom]
@@ -233,7 +235,7 @@ object Form1: TForm1
       Left = 360
       Height = 0
       Top = 0
-      Width = 0
+      Width = 69
       Anchors = [akTop, akLeft, akRight, akBottom]
       Caption = 'FwdRightTB'
       Font.CharSet = ANSI_CHARSET
@@ -276,7 +278,7 @@ object Form1: TForm1
     AnchorSideBottom.Side = asrBottom
     Left = 0
     Height = 202
-    Top = -202
+    Top = -35
     Width = 118
     Anchors = [akLeft, akBottom]
     Max = 4
@@ -293,7 +295,7 @@ object Form1: TForm1
     AnchorSideBottom.Control = UpDown1
     Left = 10
     Height = 68
-    Top = -280
+    Top = -113
     Width = 98
     Anchors = [akLeft, akRight, akBottom]
     AutoSize = False
@@ -315,8 +317,8 @@ object Form1: TForm1
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = -120
-    Height = 0
+    Left = 551
+    Height = 167
     Top = 0
     Width = 120
     LineSize = 50
