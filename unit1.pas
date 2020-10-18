@@ -23,6 +23,7 @@ type
     NopTB: TButton;
     PortEdit: TEdit;
     DurationSlider: TTrackBar;
+    ProgressBar1: TProgressBar;
     RightTB: TButton;
     Stop1TB: TButton;
     StopTB: TButton;
@@ -31,7 +32,16 @@ type
 
     procedure DurationSliderChange(Sender: TObject);
     procedure FormResize(Sender: TObject);
-    procedure GroupBox1Click(Sender: TObject);
+    procedure ForwardTBMouseEnter(Sender: TObject);
+    procedure FwdLeftTBMouseEnter(Sender: TObject);
+    procedure FwdRightTBMouseEnter(Sender: TObject);
+    procedure LeftTBMouseEnter(Sender: TObject);
+    procedure RightTBMouseEnter(Sender: TObject);
+    procedure BackwardsTBMouseEnter(Sender: TObject);
+    procedure StopTBMouseEnter(Sender: TObject);
+    procedure Stop1TBMouseEnter(Sender: TObject);
+
+    procedure NopTBMouseEnter(Sender: TObject);
     procedure SetButtonSizes;
     procedure FwdLeftTBClick(Sender: TObject);
 
@@ -47,6 +57,7 @@ type
     procedure Stop1TBClick(Sender: TObject);
     procedure UpDown1Click(Sender: TObject; Button: TUDBtnType);
     procedure Stop();
+
 
   private
 
@@ -64,7 +75,7 @@ var
   speed,duration:integer;  // global setting , that affects joystick movement
   status: LongInt;
   Xposition,Yposition: Integer;  // numbers forwarded as parameters to Move Joystick procedure
-  hoverdrive: boolean; // mouse click control or both click hover/eyegaze/
+  hoverdrive,charged: boolean; // mouse click control or both click hover/eyegaze/
   // control. if charged we can move - charging done by activating charge button-this prevents stuck cursor driving
 implementation
 
@@ -107,10 +118,66 @@ begin
    SetButtonSizes;
 end;
 
-procedure TForm1.GroupBox1Click(Sender: TObject);
+// use cursor entry instead of click. Switch on 'magnetic cursor' in OptiKey.
+// For safety reasons, a reload by looking at reload Button
+procedure TForm1.ForwardTBMouseEnter(Sender: TObject);
 begin
+  if ( charged= True ) then begin
+        ForwardTBClick(ForwardTB);
+    charged:= False;
+  end;
+end;
+procedure TForm1.FwdLeftTBMouseEnter(Sender: TObject);
+begin
+  if ( charged= True ) then begin
+        FwdLeftTBClick(FwdLeftTB);
+    charged:= False;
+  end;
+end;
+procedure TForm1.FwdRightTBMouseEnter(Sender: TObject);
+begin
+  if ( charged= True ) then begin
+        FwdRightTBClick(FwdRightTB);
+    charged:= False;
+  end;
+end;
+procedure TForm1.LeftTBMouseEnter(Sender: TObject);
+begin
+  if ( charged= True ) then begin
+        LeftTBClick(LeftTB);
+    charged:= False;
+  end;
+end;
+procedure TForm1.RightTBMouseEnter(Sender: TObject);
+begin
+  if ( charged= True ) then begin
+        RightTBClick(RightTB);
+    charged:= False;
+  end;
+end;
+procedure TForm1.BackwardsTBMouseEnter(Sender: TObject);
+begin
+  if ( charged= True ) then begin
+         BackwardsTBMouseEnter(BackwardsTB);
+    charged:= False;
+  end;
 
 end;
+procedure TForm1.StopTBMouseEnter(Sender: TObject);
+begin
+        StopTBClick(StopTB);
+end;
+procedure TForm1.Stop1TBMouseEnter(Sender: TObject);
+begin
+        Stop1TBClick(Stop1TB);
+end;
+
+procedure TForm1.NopTBMouseEnter(Sender: TObject);
+begin
+  charged:= True;
+end;
+
+
 
 procedure TForm1.SetButtonSizes;
 var
@@ -150,8 +217,28 @@ begin
   Yposition := midpos - speed;
   MoveJoystick(Xposition,Yposition);
 end;
+procedure IndicateActivity;
+const
+  timestep = 10;
+var
+  j: integer;
+   maxsteps: longint;
+   interrupt : boolean;
+begin
+  j := 0;
+  interrupt := False;
+  Form1.ProgressBar1.Max:=100;
+  //progressbar steps number
+  maxsteps := duration div timestep;
+   // grow progress until interrupted or duration reached:
+  while  ( interrupt = False )  and ( j <  maxsteps  )  do
+    begin
+       sleep(timestep);
+       j :=  j + 1;
+       Form1.ProgressBar1.Position := (j * timestep);
 
-
+    end;
+end;
 
 procedure TForm1.MoveJoystick(xpos:integer;ypos:integer);
 // this procedure opens serial port, sends message to arduino, closes the port
@@ -162,7 +249,7 @@ var
   message: String;
   status: LongInt;
 begin
-
+    ProgressBar1.Position:=0;
     serHandle := SerOpen(portname); // Bei Windows 'COMx' // COM-Port Ã¶ffnen.
     // writeln(serHandle,' ',message,' ', portname);
     message := '(' + IntToStr(xpos) + ':' + IntToStr(ypos) + ':' + IntToStr(duration) + ')';
@@ -180,13 +267,17 @@ begin
       SerSync(serHandle); { flush out any remaining before closure }
       SerFlushOutput(serHandle); { discard any remaining output }
       SerClose(serHandle);
-      // report error
+      //, report error
     end;
     //arduino response code here:
     //
     SerSync(serHandle); { flush out any remaining before closure }
     SerFlushOutput(serHandle); { discard any remaining output }
-    SerClose(serHandle);            // COM-Port schliessen.
+    SerClose(serHandle);            // COM-Port close.
+
+    // Show Activity -progressbar
+    // todo
+    // IndicateActivity;
 
 end;
 
